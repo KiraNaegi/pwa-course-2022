@@ -10,6 +10,7 @@ import FriendList from "./FriendList";
 import FriendProfile from "./FriendProfile";
 import { useAuthStateContext, LoginComponent } from './context/FirebaseAuthContextProvider';
 import ChatStateProvider from "./context/FirebaseChatContextProvider";
+import TestState from "./TestState";
   
 function Router() {
   const { authState } = useAuthStateContext();
@@ -22,7 +23,7 @@ function Router() {
         <ChatStateProvider self={authState.user}>
           <BrowserRouter>
             <Routes>
-              <Route path="/chat" element={<Chat />}/>
+              <Route path="/chat" element={<TestState />}/>
               <Route path="/privatechat/:uid" element={<PrivateChat />}/>
               <Route path="/profile" element={<Profile />}/>
               <Route path="/friend-list" element={<FriendList />}/>
