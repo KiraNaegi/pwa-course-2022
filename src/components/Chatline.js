@@ -18,7 +18,7 @@ function Chatline(props) {
       const [, name] = text.split(" ");
       fetch("https://api.agify.io/?name=" + name)
         .then(res => res.json())
-        .then(data => setElement(data.age));
+        .then(data => setElement(data.name + " : " + data.age));
     }
     else if (text.startsWith("/gender")) {
       const [, name] = text.split(" ");
@@ -28,8 +28,13 @@ function Chatline(props) {
     }
     else if (text.startsWith("/randomfact")) {
       // ex10-01 here: Implement randomfact using fetch & promise
+      fetch("https://uselessfacts.jsph.pl/random.json?language=en")
+        .then(res => res.json())
+        .then(data => {
+          console.log("xxxxx>",  data);
+          setElement(data.text)
+        });
       // https://uselessfacts.jsph.pl/random.json?language=en
-
     }
   };
 
